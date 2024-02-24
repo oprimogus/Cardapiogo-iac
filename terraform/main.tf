@@ -3,11 +3,10 @@ terraform {
   required_version = "1.7.4"
 
   backend "s3" {
-    bucket         = "oprimogus-terraform-state"
-    key            = "states/terraform.tfstate"
-    region         = "sa-east-1"
+    bucket = "oprimogus-terraform-state"
+    key    = "states/terraform.tfstate"
+    region = "sa-east-1"
   }
-
 
   required_providers {
     aws = {
@@ -26,6 +25,4 @@ provider "aws" {
       managed-by = "terraform"
     }
   }
-
-
 }

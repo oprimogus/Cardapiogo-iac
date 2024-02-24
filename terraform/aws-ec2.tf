@@ -15,10 +15,14 @@ data "aws_ami" "ubuntu" {
 }
 
 resource "aws_instance" "manager" {
-  ami                    = data.aws_ami.ubuntu.id
-  instance_type          = "t2.micro"
-  key_name               = "GoldenExperience"
-  vpc_security_group_ids = [aws_security_group.cardapiogo_sg.id]
+  ami                         = data.aws_ami.ubuntu.id
+  instance_type               = "t2.micro"
+  key_name                    = "GoldenExperience"
+  vpc_security_group_ids      = [aws_security_group.cardapiogo_sg.id]
+  subnet_id                   = aws_subnet.cardapiogo_subnet.id
+  associate_public_ip_address = true
+  user_data                   = file("../docs/scripts/initialSetupEC2.sh")
+  user_data_replace_on_change = true
 
   tags = {
     Name = "Cardapiogo-Manager"
