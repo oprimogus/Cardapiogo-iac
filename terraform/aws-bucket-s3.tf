@@ -1,8 +1,10 @@
-# resource "aws_s3_bucket" "bucket" {
-#   bucket = "oprimogus-bucket"
+resource "aws_s3_bucket" "terraform_state" {
+  bucket = "oprimogus-terraform-state"
+}
 
-#   tags = {
-#     Name        = "My bucket"
-#     Environment = "Dev"
-#   }
-# }
+resource "aws_s3_bucket_versioning" "terraform_state_versioning" {
+  bucket = aws_s3_bucket.terraform_state.id
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
