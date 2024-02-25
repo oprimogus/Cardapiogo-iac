@@ -76,3 +76,13 @@ resource "aws_route_table_association" "route_table_association" {
   subnet_id      = aws_subnet.cardapiogo_subnet.id
   route_table_id = aws_route_table.route_table.id
 }
+
+output "subnet_id" {
+  description = "ID da subnet"
+  value       = aws_subnet.cardapiogo_subnet.id
+}
+
+output "security_group_id" {
+  description = "ID da security group"
+  value       = aws_security_group.cardapiogo_sg.id
+}

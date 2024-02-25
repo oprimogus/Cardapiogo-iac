@@ -28,3 +28,8 @@ resource "aws_instance" "manager" {
     Name = "Cardapiogo-Manager"
   }
 }
+
+output "manager_instance_ip_address" {
+  description = "IP da instância manager"
+  value       = aws_instance.manager.public_ip
+}
