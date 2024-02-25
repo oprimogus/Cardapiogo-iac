@@ -20,6 +20,15 @@ resource "aws_security_group" "cardapiogo_sg" {
     cidr_blocks = ["0.0.0.0/0"] # Substitua "seu_ip" pelo seu IP público
   }
 
+  # Regra de entrada: Permitir tráfego na porta 6443 para comunicação do k3s
+  ingress {
+    description = "k3s server"
+    from_port   = 6443
+    to_port     = 6443
+    protocol    = "tcp"
+    cidr_blocks = ["10.0.0.0/16"] # Substitua isso pelo CIDR do seu VPC ou um intervalo mais restrito
+  }
+
   # Regra de saída: Permitir todo o tráfego de saída
   egress {
     from_port   = 0
