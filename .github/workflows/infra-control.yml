@@ -1,4 +1,4 @@
-name: Terraform Manage Infrastructure
+name: Terraform - Apply or Destroy infrastructure
 
 on:
   workflow_dispatch:
