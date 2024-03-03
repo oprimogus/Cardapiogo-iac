@@ -54,7 +54,7 @@ resource "aws_vpc" "cardapiogo_vpc" {
 resource "aws_subnet" "cardapiogo_subnet" {
   vpc_id     = aws_vpc.cardapiogo_vpc.id
   cidr_block = "10.0.1.0/24"
-  availability_zone = "sa-east-1a"
+  availability_zone = "sa-east-1c"
 
   tags = {
     Name = "Main"
