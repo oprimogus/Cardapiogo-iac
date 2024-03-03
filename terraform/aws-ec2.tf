@@ -32,7 +32,7 @@ resource "aws_instance" "manager1" {
 
 output "EC2_manager_instance_ip_address" {
   description = "IP da instância manager"
-  value       = aws_instance.manager.public_ip
+  value       = aws_instance.manager1.public_ip
 }
 
 resource "aws_instance" "worker1" {
