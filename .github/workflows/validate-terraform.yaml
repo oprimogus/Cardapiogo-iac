@@ -1,4 +1,4 @@
-name: 'Assess Infrastructure'
+name: 'Validate Infrastructure'
 
 on:
   push:
