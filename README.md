@@ -8,7 +8,7 @@ O `Cardapiogo-IAC` é um repositório destinado à configuração e gerenciament
 
 Antes de iniciar, certifique-se de que você tem os seguintes requisitos instalados e configurados:
 
-- Terraform (versão especificada, se aplicável)
+- Terraform 1.7.4
 
 ## Configuração Inicial
 
