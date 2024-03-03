@@ -24,6 +24,7 @@ resource "aws_instance" "manager1" {
   user_data                   = file("../docs/scripts/SetupK3sManagerEC2.sh")
   user_data_replace_on_change = true
   iam_instance_profile        = aws_iam_instance_profile.ec2_profile.name
+  depends_on = [ aws_vpc.cardapiogo_vpc ]
 
   tags = {
     Name = "Cardapiogo-Manager1"
@@ -45,6 +46,7 @@ resource "aws_instance" "worker1" {
   user_data                   = file("../docs/scripts/SetupK3sWorkerEC2.sh")
   user_data_replace_on_change = true
   iam_instance_profile        = aws_iam_instance_profile.ec2_profile.name
+  depends_on = [ aws_instance.manager1 ]
 
   tags = {
     Name = "Cardapiogo-Worker1"
