@@ -1,18 +1,16 @@
-name: 'Terraform CI/CD'
+name: Terraform Manage Infrastructure
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+  workflow_dispatch:
+    inputs:
+      action:
+        description: 'Enter "apply" to create/update or "destroy" to remove resources'
+        required: true
+        default: 'apply'
 
 jobs:
   terraform:
-    name: 'Terraform'
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -42,8 +40,11 @@ jobs:
         run: terraform plan
         working-directory: ./terraform
 
-      # Opcional: Descomente para aplicar automaticamente
-      - name: Terraform Apply
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform apply -auto-approve
+      - name: Terraform Apply or Destroy
+        run: |
+          if [ "${{ github.event.inputs.action }}" == "apply" ]; then
+            terraform apply -auto-approve
+          elif [ "${{ github.event.inputs.action }}" == "destroy" ]; then
+            terraform destroy -auto-approve
+          fi
         working-directory: ./terraform
