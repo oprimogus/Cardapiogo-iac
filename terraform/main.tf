@@ -3,7 +3,7 @@ terraform {
   required_version = "1.7.4"
 
   backend "s3" {
-    bucket = "oprimogus-terraform-state"
+    bucket = "cardapiogo-terraform-state"
     key    = "states/terraform.tfstate"
     region = "sa-east-1"
   }

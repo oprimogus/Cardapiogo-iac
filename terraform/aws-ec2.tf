@@ -14,7 +14,7 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"] # Canonical
 }
 
-resource "aws_instance" "manager" {
+resource "aws_instance" "manager1" {
   ami                         = data.aws_ami.ubuntu.id
   instance_type               = "t2.micro"
   key_name                    = "GoldenExperience"
@@ -26,11 +26,11 @@ resource "aws_instance" "manager" {
   iam_instance_profile        = aws_iam_instance_profile.ec2_profile.name
 
   tags = {
-    Name = "Cardapiogo-Manager"
+    Name = "Cardapiogo-Manager1"
   }
 }
 
-output "manager_instance_ip_address" {
+output "EC2_manager_instance_ip_address" {
   description = "IP da instância manager"
   value       = aws_instance.manager.public_ip
 }
@@ -51,7 +51,7 @@ resource "aws_instance" "worker1" {
   }
 }
 
-output "worker1_instance_ip_address" {
+output "EC2_worker1_instance_ip_address" {
   description = "IP da instância worker1"
   value       = aws_instance.worker1.public_ip
 }
